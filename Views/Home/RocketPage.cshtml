@@ -1,0 +1,152 @@
+﻿@model RocketLaunchDay2.Models.simpleLaunch
+
+@{
+    ViewBag.Title = "RocketPage";
+}
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #th {
+            padding: 8px;
+            text-align: left;
+            color: #312185;
+            width: 17%;
+            font-size: 20px;
+        }
+
+        #td {
+            color: #898889;
+            padding: 8px;
+            text-align: left;
+            border-left: 2px solid black;
+            border-color: #7b7c7c;
+            width: 83%;
+        }
+
+        #table1 {
+            /*border-collapse: collapse;*/
+            width: 100%;
+            height: 20%;
+            margin-left: 40px;
+        }
+
+        #td1 {
+            padding: 0px;
+            width: 40%;
+        }
+
+        #td2 {
+            text-align: left;
+            color: #ffffff;
+            width: 60%;
+            font-size: 30px;
+        }
+
+        #myDiv {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 40px;
+            margin-right: 40px;
+            border: 4px solid red;
+            border-color: #800000;
+            border-radius: 8px;
+            /*border-color:blue;*/
+            background-image: url(../Photos/background.jpg);
+            color: black;
+            padding: 40px;
+            text-align: left;
+            transition: transform .2s;
+        }
+
+            #myDiv:hover {
+                -ms-transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+            }
+    </style>
+    <!--<style>
+    p {
+      text-align: center;
+      font-size: 60px;
+      margin-top: 0px;
+    }
+    </style>-->
+</head>
+<body background="../Photos/racheta.png">
+
+    <table id="table1">
+        <tr>
+            <td id="td1"><a href='@Url.Action("Index", "Home")'> <img src="../Photos/logoMic.png" width="25%" /> </a> </td>
+            <td id="td2">@Html.DisplayFor(m => m.name)</td>
+        </tr>
+    </table>
+    <script>// Set the date we're counting down to
+var countDownDate = new Date(@Html.DisplayFor(m => m.start)).getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+            }
+}, 1000);</script>
+    <p id="demo"></p>
+
+    <div id="myDiv">
+        <table id="table">
+            <tr>
+                <th id="th">Date</th>
+                <td id="td">@Html.DisplayFor(m => m.start)</td>
+            </tr>
+        </table>
+    </div>
+    <div id="myDiv">
+        <table id="table">
+            <tr>
+                <th id="th">Launch Window</th>
+                <td id="td">@Html.DisplayFor(m => m.start) - @Html.DisplayFor(m => m.finish)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="myDiv">
+        <table id="table">
+            <tr>
+                <th id="th">Description</th>
+                <td id="td">@Html.DisplayFor(m => m.description)</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+
+</body>
+</html>

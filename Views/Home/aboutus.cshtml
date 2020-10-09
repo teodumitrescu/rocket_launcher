@@ -1,0 +1,223 @@
+﻿@model RocketLaunchDay2.Models.simpleLaunch
+
+@{
+    ViewBag.Title = "About Us";
+}
+
+
+<html lang="en">
+<head>
+    <title> About Us</title>
+</head>
+<style>
+    /*.textbox {
+    h1 {
+        font-size: 12px;
+        font-family: 'open sans', sans-serif;
+        align-items: center;
+        color: #8e2525;
+    }
+
+    h2 {
+        font-size: 9px;
+        font-family: 'open sans', sans-serif;
+        color: dimgrey;
+    }
+    }*/
+    .title {
+        font-size: 35px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 700;
+        line-height: 53.9px;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        text-shadow: -6px -2px 8px rgba(236, 150, 96, 1);
+        color: #8e2525;
+    }
+
+    .MainBackground {
+        position: relative;
+        background-image: url("racheta.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100vh;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #th {
+        padding: 8px;
+        text-align: left;
+        color: #312185;
+        width: 17%;
+        font-size: 20px;
+    }
+
+    #td {
+        color: #898889;
+        padding: 8px;
+        text-align: left;
+        border-left: 2px solid black;
+        border-color: #7b7c7c;
+        width: 83%;
+    }
+
+    #table1 {
+        /*border-collapse: collapse;*/
+        width: 100%;
+        height: 20%;
+        margin-left: 40px;
+    }
+
+    #td1 {
+        padding: 0px;
+        width: 40%;
+    }
+
+    #td2 {
+        text-align: left;
+        color: #ffffff;
+        width: 60%;
+        font-size: 30px;
+    }
+
+    #myDiv {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 40px;
+        margin-right: 40px;
+        border: 4px solid red;
+        border-color: #800000;
+        border-radius: 8px;
+        /*border-color:blue;*/
+        background-image: url(../Photos/background.jpg);
+        color: black;
+        padding: 40px;
+        text-align: left;
+        transition: transform .2s;
+    }
+
+        #myDiv:hover {
+            -ms-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+</style>
+<body background="../Photos/racheta2.jpg">
+    <table id="table1">
+        <tr>
+            <td id="td1"><a href='@Url.Action("Index", "Home")'> <img src="../Photos/logoMic.png" width="25%" /> </a> </td>
+            <td id="td2">About us</td>
+        </tr>
+    </table>
+    <div id="myDiv">
+        <table id="table">
+            <tr>
+                <th id="th">Meet the team</th>
+                <td id="td">
+                    Bogdan Circeanu -  Head in the clouds (literally), but his back-end is centered<br />
+                    Razvan Draghici - His Talent Makes Loose-ends tie<br />
+                    Teodora Dumitrescu -  Image Director (on and off-screen)<br />
+                    Cristian Osiac - A modern cartographer<br />
+                    Mircea Radu - Text Boxeur<br />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="myDiv">
+        <table id="table">
+            <tr>
+                <th id="th">Who are we?</th>
+                <td id="td">Senior-year students at "Fratii Buzesti" National College and, most important, friends reunited by the same passion for science. Our curiosity led us in this project and we're eager to approach every opportunity that we meet on the road!</td>
+            </tr>
+        </table>
+    </div>
+    <div id="myDiv">
+        <table id="table">
+            <tr>
+                <th id="th">Our goal</th>
+                <td id="td">The most important mission is to raise awareness about the key role of space exploration in the development of science and the improvement of the daily activities. Nowadays, living is easier because of the magnificent existence of these giant helpers of humanity. People don't know and, sadder than that, don't care about the rocket launches. Therefore, we aim to inform and make them more appealing to every individual, in order for them to fully understand and support the initiatives of the space companies.
+ </td>
+            </tr>
+        </table>
+    </div>
+    <div id="myDiv">
+        <table id="table">
+            <tr>
+                <th id="th">Plans for the future</th>
+                <td id="td">We want to continue our education in the fields of Computer Sience and Engineering and fuel our dreams to get as far as the Moon (or beyond it, if possible!)</td>
+            </tr>
+        </table>
+    </div>
+    <div id="myDiv">
+        <table id="table">
+            <tr>
+                <th id="th" colspan="2">THE NEXT LAUNCH</th>
+
+            </tr>
+
+            <tr>
+                <th id="th">Name</th>
+                <td id="td">@Html.DisplayFor(m => m.name)</td>
+            </tr>
+            <tr>
+                <th id="th">Countdown</th>
+                <td id="td">
+                    <script>// Set the date we're counting down to
+var countDownDate = new Date(@Html.DisplayFor(m => m.start)).getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+                            // Get todays date and time
+                            var now = new Date().getTime();
+
+                            // Find the distance between now and the count down date
+                            var distance = countDownDate - now;
+
+                            // Time calculations for days, hours, minutes and seconds
+                            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                            // Output the result in an element with id="demo"
+                            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                                + minutes + "m " + seconds + "s ";
+
+                            // If the count down is over, write some text
+                            if (distance < 0) {
+                                clearInterval(x);
+                                document.getElementById("demo").innerHTML = "EXPIRED";
+                            }
+}, 1000);</script>
+                    <p id="demo"></p>
+                </td>
+            </tr>
+            <tr>
+                <th id="th">Date</th>
+                <td id="td">@Html.DisplayFor(m => m.start)</td>
+            </tr>
+            <tr>
+                <th id="th">Launch Window</th>
+                <td id="td">@Html.DisplayFor(m => m.start) - @Html.DisplayFor(m => m.finish)</td>
+            </tr>
+            <tr>
+                <th id="th">Description</th>
+                <td id="td">@Html.DisplayFor(m => m.description)</td>
+            </tr>
+        </table>
+    </div>
+    <div style ="margin-left: 40px; top: 10px">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/wwMDvPCGeE0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+   </div>
+</body>
+</html>

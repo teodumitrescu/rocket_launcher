@@ -1,0 +1,345 @@
+﻿@model RocketLaunchDay2.Models.simpleLaunch
+    
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Rocket Launch Schedule
+    </title>
+    <style type="text/css">
+                /*    .MainBackground {
+            position: relative;
+            background-image: url("racheta2.jpg");
+            background-repeat:no-repeat;
+            background-size:100% 100vh;
+        }*/
+                .title {
+                    font-size: 35px;
+                    font-style: normal;
+                    font-variant: normal;
+                    font-weight: 700;
+                    line-height: 53.9px;
+                    text-align: center;
+                    font-family: 'Open Sans', sans-serif;
+                    text-shadow: -6px -2px 8px rgba(236, 150, 96, 1);
+                    color: #8e2525;
+                }
+
+
+                body {
+                    margin: 0;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+
+
+
+                .top-container {
+                    padding: 30px;
+                    text-align: center;
+                }
+
+                .content {
+                    padding: 16px;
+                }
+
+                .sticky {
+                    position: fixed;
+                    top: 0;
+                    width: 100%;
+                }
+
+                    .sticky + .content {
+                        padding-top: 102px;
+                    }
+
+                #myDiv {
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    margin-left: 40px;
+                    margin-right: 40px;
+                    border: 4px solid red;
+                    border-color: #800000;
+                    border-radius: 8px;
+                    /*border-color:blue;*/
+                    background-image: url(../Photos/background.jpg);
+                    color: #010144;
+                    padding: 40px;
+                    text-align: left;
+                    font-family: 'oswald', sans-serif;
+                    text-align: center;
+                    transition: transform .2s;
+                }
+
+                    #mydiv:hover {
+                        -ms-transform: scale(1.1); /* IE 9 */
+                        -webkit-transform: scale(1.1); /* Safari 3-8 */
+                        transform: scale(1.1);
+                    }
+
+                #table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                #th {
+                    padding: 8px;
+                    text-align: center;
+                    color: #010144;
+                    width: 17%;
+                    font-size: 20px;
+                }
+
+                #td {
+                    color: #010144;
+                    padding: 8px;
+                    text-align: left;
+                    border-left: 2px solid black;
+                    border-color: #7b7c7c;
+                    width: 83%;
+                }
+
+                #table1 {
+                    /*border-collapse: collapse;*/
+                    width: 100%;
+                    height: 20%;
+                    margin-left: 40px;
+                }
+
+                #td1 {
+                    padding: 0px;
+                    width: 40%;
+                }
+
+                #td2 {
+                    text-align: left;
+                    color: #010144;
+                    width: 60%;
+                    font-size: 30px;
+                }
+
+
+        #divButtons {
+            margin-left:auto;
+            margin-right:auto;
+            text-align: center;
+        }
+
+        
+
+                .button {
+                    display: inline-block;
+                    border-radius: 4px;
+                    background-color: #800000;
+                    border: none;
+                    color: #FFFFFF;
+                    text-align: center;
+                    font-size: 28px;
+                    padding: 20px;
+                    width: 400px;
+                    transition: all 0.5s;
+                    cursor: pointer;
+                    margin: 5px;
+                }
+
+                    .button span {
+                        cursor: pointer;
+                        display: inline-block;
+                        position: relative;
+                        transition: 0.5s;
+                    }
+
+                        .button span:after {
+                            content: '\00bb';
+                            position: absolute;
+                            opacity: 0;
+                            top: 0;
+                            right: -20px;
+                            transition: 0.5s;
+                        }
+
+                    .button:hover span {
+                        padding-right: 25px;
+                    }
+
+                        .button:hover span:after {
+                            opacity: 1;
+                            right: 0;
+                        }
+    </style>
+</head>
+<body background="../Photos/racheta2.jpg">
+
+    <div class="MainBackground">
+        <div class="top-container">
+            <div class="title">
+                <table>
+                    <tr>
+                        <td><img src="../Photos/logoMic.png" width="50%" /></td>
+                    </tr>
+                </table>
+                <h1 font-size: 35px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 53.9px; text-align: center;
+                    font-family: 'Open Sans' , sans-serif; text-shadow: -6px -2px 8px rgba(236, 150, 96, 1);
+                    color:#8e2525;>
+                    The Space Travellers
+                </h1>
+            </div>
+        </div>
+        <div class="header" id="myHeader">
+            <div class="row middle-on-small center-on-small">
+             
+                    <div id="divButtons">
+                        <a href='@Url.Action("Map", "Home")'> <button class="button" style="vertical-align:middle"><span>SEE MAP </span></button></a>
+                        <a href='@Url.Action("DidYouKnow", "Home")'><button class="button" style="vertical-align:middle"><span>DID YOU KNOW? </span></button></a>
+                        <a href='@Url.Action("AboutUs", "Home")'><button class="button" style="vertical-align:middle"><span>ABOUT US </span></button></a>
+                    </div>
+                
+
+            </div>
+        </div>
+        <table id="table1">
+            <tr>
+                <td id="td2"></td>
+            </tr>
+        </table>
+
+
+
+        <div id="myDiv">
+            <table id="table">
+                <tr>
+                    <th id="th" colspan="2">THE NEXT LAUNCH</th>
+
+                </tr>
+
+                <tr>
+                    <th id="th">Name</th>
+                    <td id="td">'@Html.DisplayFor(m => m.name)'</td>
+                </tr>
+                <tr>
+                    <th id="th">Countdown</th>
+                    <td id="td">
+                        <script>
+// Set the date we're counting down to 
+var countDownDate = new Date(str).getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+                                // Get todays date and time
+                                var now = new Date().getTime();
+
+                                // Find the distance between now and the count down date
+                                var distance = countDownDate - now;
+
+                                // Time calculations for days, hours, minutes and seconds
+                                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                // Output the result in an element with id="demo"
+                                document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                                    + minutes + "m " + seconds + "s ";
+
+                                // If the count down is over, write some text
+                                if (distance < 0) {
+                                    clearInterval(x);
+                                    document.getElementById("demo").innerHTML = "EXPIRED";
+                                }
+}, 1000);</script>
+                        <p id="demo"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="th">Date</th>
+                    <td id="td">@Html.DisplayFor(m => m.start)</td>
+                </tr>
+                <tr>
+                    <th id="th">Launch Window</th>
+                    <td id="td">@Html.DisplayFor(m => m.start) - @Html.DisplayFor(m => m.finish)</td>
+                </tr>
+                <tr>
+                    <th id="th">Description</th>
+                    <td id="td">@Html.DisplayFor(m => m.description)</td>
+                </tr>
+            </table>
+        </div>
+        <div id="myDiv">
+            <b>
+                <h1>Aaand...why on Earth would I need to know about rocket launches?</h1>
+                <span> "I think we're going to the Moon because it's in the nature of the human being to face challenges. It's by the nature of his deep inner soul...We're required to do these things just as salmon swim upstream" said Neil Armstrong</span>
+                <br /> <hr>
+                <span>Motivating, isn't it? Rockets are the salmon of our future, showing us the unknown and changing the perception of the present within miliseconds...</span>
+                <br />
+                <span> "Umm...so what? Waaay too abstract. And where's the actual benefit, anyway?!"is the expected response to this, but let us change that.</span>
+                <br />
+                <br />
+                <span><b><h2>What if we show you the real aftermath of rockets and their missions?</h2></b></span>
+            </b>
+
+        </div>
+        <br />
+        <div id="myDiv">
+            <table id="table">
+                <tr>
+                    <th id="th"><img src="../Photos/led.png" alt="Avatar" style="border-radius:30%"></th>
+                    <td id="td">Red LEDs are used in space to grow plants and heal humans on Earth. LED technology used by NASA has contributed to the development of medical  devices such as WARP 10.</td>
+                </tr>
+            </table>
+            <table id="table">
+                <tr>
+                    <th id="th"><img src="../Photos/shoes.png" alt="Avatar" style="border-radius:30%"></th>
+                    <td id="td">I'm sure athletic trainers are your favourite cozy shoes, but if it weren't for a NASA engineer whose occupation was to design the suit, you'd spend your life in uneasy boots. Ugh! My feet hurt already!</td>
+                </tr>
+            </table>
+            <table id="table">
+                <tr>
+                    <th id="th"><img src="../Photos/mouse.png" alt="Avatar" style="border-radius:30%"></th>
+                    <td id="td"> On-screen data manipulation is easiest when using a mouse. In the 1960s a NASA researcher was trying to make computers more interactive when an idea was suggested about how best to manipulate data on a computer screen, leading to the creation of the almighty mouse.</td>
+                </tr>
+            </table>
+            <table id="table">
+                <tr>
+                    <th id="th"><img src="../Photos/insulation.png" alt="Avatar" style="border-radius:30%"></th>
+                    <td id="td"> Imagine sleeping at temperatures below 0 degrees Celsius for the whole winter. Worse than that, think about your room feeling like a burning oven in the summer. Your first step for solving the problem would be insulation, right? if yes, thank NASA for the product named 'Radiant Barrier', one of the most used materials in the industry. </td>
+                </tr>
+            </table>
+            <table id="table">
+                <tr>
+                    <th id="th"><img src="../Photos/scans.png" alt="Avatar" style="border-radius:30%"></th>
+                    <td id="td"> A space program needs a pretty good digital image, the JPL played a lead role in developing this technology, which in turn helped create CAT scanners and radiography.</td>
+                </tr>
+            </table>
+            <table id="table">
+                <tr>
+                    <th id="th"><img src="../Photos/camera.png" alt="Avatar" style="border-radius:30%"></th>
+                    <td id="td"> In the 1990s a team at JPL worked to create cameras small enough to fit an spacecraft and with scientific qulity. 1/3 of all cameras contain this technology.</td>
+                </tr>
+            </table>
+
+
+
+        </div>
+    </div>
+    <div style ="margin-left:40px; top:10px">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/wwMDvPCGeE0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+   </div>
+    <script>window.onscroll = function() { myFunction() };
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+}</script>
+</body>
+
+</html>
